@@ -2,11 +2,11 @@
 
 // CONSTRUCT CARD OBJECTS
 class Card {
-	constructor(card1, card2 = card1, set = card1, sound = card1) {
-		this.card1 = card1;
-		this.card2 = card2;
-		this.set = set;
-		this.sound = sound;
+	constructor(cardObject) {
+		this.card1 = cardObject.card1;
+		this.card2 = cardObject.card2;
+		this.set = cardObject.set;
+		this.sound = cardObject.sound;
 	}
 }
 
@@ -14,9 +14,14 @@ class Card {
 const myField = document.querySelector('#field');
 myField.addEventListener('click', onClickCard);
 
-// ARRAY
-const myCardArray = ["duck", "kitten", "piglet", "puppy", "calf", "veal", "lamb", "rooster",
-"horse", "mouse", "dog", "cat", "goose", "goat", "sheep", "pig", "cow", "chick", "hen"];
+// FETCH ARRAY
+let myCardArray
+fetch('js/cards.json')
+	.then(response => response.json())
+	// CREATE ARRAY WITH CARD OBJECTS
+	.then(data => {
+		myCardArray = data.map(card => new Card(card));
+	})
 
 // SELECT DIFFICULTY SELECT ELEMENT
 const difficulty = document.getElementById('difficulty');
@@ -33,19 +38,15 @@ function onSelectFieldSize(e) {
 		case '6':boardClass = 'board6';pairs = 18;break;
 	}
 	
-	// SELECT WHICH PAIRS TO USE
+	// SHUFFLE ARRAY
 	const shuffled = shuffle(myCardArray);
+	// SELECT WHICH PAIRS TO USE
 	const subsetCardArray = shuffled.slice(0, pairs);
-
-	// DOUBLE ARRAY
-	const myDblCardArray = [...subsetCardArray, ...subsetCardArray];
-	// SHUFFLED ARRAY
-	const shuffledCardArray = shuffle(myDblCardArray);
-	// CREATE ARRAY WITH CARD OBJECTS
-	const myCardSet = shuffledCardArray.map(card => new Card(card));
+	// DOUBLE & SHUFFLE ARRAY
+	const shuffledDblCardArray = shuffle([...subsetCardArray, ...subsetCardArray]);
 	
 	// CALL POPULATE FIELD
-	populateField(boardClass, shuffledCardArray);
+	populateField(boardClass, shuffledDblCardArray);
 }
 
 // SHUFFLE ARRAY
@@ -59,9 +60,10 @@ function shuffle(array) {
 }
 
 // FILL HTML WITH CARD ELEMENTS
-function populateField(boardClass, shuffledCardArray) {
+function populateField(boardClass, shuffledDblCardArray) {
 	myField.innerHTML = "";
-	shuffledCardArray.forEach((element) => {
+	shuffledDblCardArray.forEach((element) => {
+		element = element.card1;
 		const newTile = document.createElement('div');
 		newTile.setAttribute("class", boardClass);
 		const newCard = document.createElement('img');
@@ -88,4 +90,4 @@ function onClickCard(e) {
 	} else if (e.target.className === 'uncovered') {// DELETE THIS <-------------------------------------------------------------- DELETE THIS
 		e.target.className = 'covered';// DELETE THIS <-------------------------------------------------------------- DELETE THIS
 	}
-} 
+}
