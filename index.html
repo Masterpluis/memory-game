@@ -8,19 +8,21 @@
 	<link href="css/game.css" rel="stylesheet">
 </head>
 <body>
-	<select name="difficulty" id="difficulty" title="choose difficulty">
-		<option selected disabled>Choose playing field</option>
-		<option value="easy">Easy (4 x 4)</option>
-		<option value="normal">Normal (5 x 5)</option>
-		<option value="hard">Hard (6 x 6)</option>
-	</select>
-	<div id="scoreboard">
-		<p>Score: <span id="score">0</span></p>
-		<p>Collected: <span id="collected">0</span></p>
-		<p>Time: <span id="time">0 min 0 sec</span></p>
-	</div>
-	<div id="field"></div>
-
+	<main>
+		<select name="difficulty" id="difficulty" title="choose difficulty">
+			<option selected disabled>Choose playing field</option>
+			<option value="easy">Easy (4 x 4)</option>
+			<option value="normal">Normal (5 x 5)</option>
+			<option value="hard">Hard (6 x 6)</option>
+		</select>
+		<div id="scoreboard">
+			<p>Score: <span id="score">0</span></p>
+			<p>Collected: <span id="collected">0</span></p>
+			<p>Time: <span id="time">0 min 0 sec</span></p>
+		</div>
+		<div id="field"></div>
+	</main>
+	
 	<script src="js/memory.js"></script>
 </body>
 </html>

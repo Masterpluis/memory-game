@@ -147,7 +147,7 @@ function onClickCard(e) {
 		e.target.className = 'uncovered';
 		
 		// PLAY SOUND OF SHOWED ANIMAL
-		playAudio(e);
+		// playAudio(e);
 		
 		// STORE CARDS THAT NEED TO BE EVALUATED
 		if (!a){
