@@ -211,6 +211,7 @@ function evaluateMatch() {
 		if (collectedPairs === pairs) {
 			// STOP TIMER
 			clearInterval(runtimer);
+			showScore();
 			timerRuns = false;
 			gameFinished();
 		}
