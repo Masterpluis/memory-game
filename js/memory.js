@@ -197,7 +197,7 @@ function showScore() {
 	scoreboard.querySelector('#score').innerHTML = score;
 	scoreboard.querySelector('#collected').innerHTML = collectedPairs;
 	scoreboard.querySelector('#time').innerHTML = `${Math.floor(time/60)} min ${time%60} sec`;
-}	
+}
 
 // EVALUATE STORED CARDS
 function evaluateMatch() {
@@ -213,13 +213,13 @@ function evaluateMatch() {
 			clearInterval(runtimer);
 			timerRuns = false;
 			gameFinished();
-		}	
+		}
 	} else {
 		// FLIP CARDS BACK
 		a.className = "covered";
 		b.className = "covered";
-	}	
-}	
+	}
+}
 
 function gameFinished() {
 	// UPDATE HIGHSCORE IF SCORE IS BETTER
@@ -242,7 +242,7 @@ function victoryScreen() {
 	const heading = document.createElement('h2');
 	const hText = document.createTextNode("CONGRATULATIONS, YOU WON!");
 	const highscores = document.createElement('p');
-	const pText = document.createTextNode("Highscores:");
+	const pText = document.createTextNode(username + "'s highscores:");
 	heading.appendChild(hText);
 	highscores.appendChild(pText);
 	newTile.appendChild(heading);
