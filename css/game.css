@@ -13,19 +13,21 @@ main {
 	margin: 0 auto;
 }
 
+/* ======================= CHOOSE PLAYING FIELD ======================= */
 #difficulty {
 	border: none;
 	background-color: lightgray;
 	border-radius: .3rem;
 	padding: .4rem;
-	min-width: 12rem;
+	width: 100%;
 }
 
+/* ======================= FIELD ======================= */
 #field {
 	display: flex;
 	flex-wrap: wrap;
 	width: 100%;
-	margin: 0 auto;
+	margin: 1rem auto 0;
 }
 
 #field>div[class] {
@@ -45,6 +47,25 @@ main {
 	transition: .25s;
 }
 
+.board4 {
+	flex: 25%;
+	max-width: 25%;
+	box-sizing: border-box;
+}
+
+.board5 {
+	flex: 20%;
+	max-width: 20%;
+	box-sizing: border-box;
+}
+
+.board6 {
+	flex: 16.66666%;
+	max-width: 16.66666%;
+	box-sizing: border-box;
+}
+
+/* ======================= VICTORY BOX ======================= */
 #victoryBox {
 	background-color: lightgray;
 	padding: 2rem;
@@ -56,7 +77,6 @@ main {
 	align-items: center;
 	justify-content: center;
 }
-
 
 #victoryBox h2 {
 	margin: 0;
@@ -80,32 +100,15 @@ main {
 	min-width: 4rem;
 }
 
+/* ======================= SCORE BOARD ======================= */
 #scoreboard {
 	background-color: lightgray;
-	width: 12rem;
+	width: 100%;
 	padding: 1px 1rem;
 	margin: 1rem 0;
 	border-radius: .3rem;
 	box-sizing: border-box;
 }
-
-.board4 {
-	flex: 25%;
-	max-width: 25%;
-	box-sizing: border-box;
-}
-
-.board5 {
-	flex: 20%;
-	max-width: 20%;
-	box-sizing: border-box;
-}
-
-.board6 {
-	flex: 16.66666%;
-	max-width: 16.66666%;
-	box-sizing: border-box;
-}	
 
 .uncovered {
 	opacity: 0;
